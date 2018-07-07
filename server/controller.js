@@ -1,17 +1,5 @@
 module.exports = {
 
-
-  // postNewProduct: (req, res) => {
-  //   const dbInstance = req.app.set("db");
-  //   const {name, price,image_url} = req.body;
-
-  //   dbInstance
-  //   .createProduct([name, price,image_url])
-  //     .then(product => {
-  //       res.status(200).send(product);
-  //     })
-  //     .catch(err => res.status(500).console.log(err));
-  // },
   
   postNewProduct: ( req, res ) => {
       const dbInstance = req.app.set('db');
