@@ -1,1 +1,1 @@
-INSERT INTO products (name,price,image_url) VALUES ($1,$2,$3);
+INSERT INTO product (name,price,image_url) VALUES ($1,$2,$3);

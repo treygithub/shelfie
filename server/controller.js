@@ -2,10 +2,10 @@ module.exports = {
 
   
     createProduct: ( req, res, next ) => {
-      const dbInstance = req.app.get('db');
-      const { name, price, imageurl } = req.body;
+      const dbInstance = req.app.set('db');
+      const {url, name, price } = req.body;
 
-      dbInstance.create_product([name,price,imageurl])
+      dbInstance.createProduct([url,name,price])
       .then( () => res.sendStatus(200) )
       .catch( err => {
         res.status(500).send({errorMessage: "Oopsiee Daisy! Something went wrong."});
@@ -14,10 +14,10 @@ module.exports = {
     },
   
     getOneProduct: ( req, res,next) => {
-      const dbInstance = req.app.get('db');
+      const dbInstance = req.app.set('db');
       const { params } = req;
   
-      dbInstance.read_product( params.id )
+      dbInstance.getOneProduct( params.id )
         .then( product => res.status(200).send( product ) )
         .catch( err => {
           res.status(500).send({errorMessage: "Oops! Something went wrong!"});
@@ -26,10 +26,10 @@ module.exports = {
     },
   
     getAllProducts: ( req, res, next ) => {
-      const dbInstance = req.app.get('db');
+      const dbInstance = req.app.set('db');
   
-      dbInstance.read_products()
-        .then( products => res.status(200).send( products ) )
+      dbInstance.getAll()
+        .then( product => res.status(200).send( product ) )
         .catch( err => {
           res.status(500).send({errorMessage: "Oops! Something went wrong!"});
           console.log(err)
@@ -38,7 +38,7 @@ module.exports = {
 
   
      delete: ( req, res, next ) => {
-       const dbInstance = req.app.get('db');
+       const dbInstance = req.app.set('db');
        const { params } = req;
   
 

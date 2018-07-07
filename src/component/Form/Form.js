@@ -3,8 +3,8 @@ import axios from "axios";
 
 
 class Form extends Component {
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
 
     this.state={
       product: [],
@@ -20,9 +20,9 @@ class Form extends Component {
   }
 
   componentDidMount(){
-    axios.get('/api/products').then(results => {
+    axios.get('/api/products').then(res => {
       this.setState({
-        product: results.data
+        product: res.data
       })
     })
   };
@@ -73,6 +73,7 @@ render() {
   let mapAndShowStuff  = this.state.product.map((e,i) => {
     return (
       <div key={i}>
+        <h4>id={e.id}</h4>
         <h2>Image Url: {e.url}</h2>
         <h4>Product Name: {e.name}</h4>
         <h4>Price: {e.price}</h4>
