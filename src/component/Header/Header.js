@@ -5,6 +5,7 @@ import React from 'react';
       <div>
         <div className="logo-pic"></div>
         <h3>SHELFIE</h3>
+        <hr />
       </div>)
 }
 export default Header;

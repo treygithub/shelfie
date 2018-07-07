@@ -8,9 +8,9 @@ class Form extends Component {
 
     this.state={
       product: [],
-      url:"",
-      name:"",
+      name:'',
       price:0,
+      image_url:''
     }
 
     this.handleUrl=this.handleUrl.bind(this);
@@ -30,7 +30,7 @@ class Form extends Component {
   
   handleUrl(val) {
     this.setState({
-      img: val
+      image_url: val
     });
   }
 
@@ -51,14 +51,14 @@ class Form extends Component {
     this.setState({
       name: "",
       price: 0,
-      img: ""
+      image_url: ""
     });
   }
 
 
   postNewProduct = () => {
-    let {url, name, price} = this.state
-    axios.post("/api/AddPost",{product: {url, name, price}} ).then(res => {
+    let {name,price,image_url} = this.state
+    axios.post("/api/AddPost",{product: {name,price,image_url}} ).then(res => {
       this.setState({
         product: res.data
       })
@@ -68,13 +68,12 @@ class Form extends Component {
 
 
 render() {
-  const { url, name, price } = this.state;
+  const { name,price,image_url } = this.state
 
   let mapAndShowStuff  = this.state.product.map((e,i) => {
     return (
       <div key={i}>
-        <h4>id={e.id}</h4>
-        <h2>Image Url: {e.url}</h2>
+        <h2>Image Url: {e.image_url}</h2>
         <h4>Product Name: {e.name}</h4>
         <h4>Price: {e.price}</h4>
      </div>
@@ -85,12 +84,12 @@ render() {
     <div>
       <form>
       <div>{mapAndShowStuff}</div>
-        <input className="url" placeholder="Add URL" type="text" name="url" onChange={e => this.handleUrl(e)}/>
-        <input className="product-name" placeholder="Create Product Name" type="text" name="name" onChange={e => this.handleName(e)}/>
-        <input className="price" placeholder="Create Price" type="text" name="price" onChange={e => this.handlePrice(e)}/>
+        <input className="product-name" placeholder="Create Product Name" type="text" name="name" onChange={e => this.handleName(e.target.value)}/>
+        <input className="price" placeholder="Create Price" type="text" name="price" onChange={e => this.handlePrice(e.target.value)}/>
+        <input className="url" placeholder="Add URL" type="text" name="image_url" onChange={e => this.handleUrl(e.target.value)}/>
         <button  className="cancel-btn" onClick={()=> this.HandleCancel()}>Cancel</button>
       
-        <button className="create-btn" onClick={() => this.postNewProduct(url,name,price)}>Add to Inventory</button>
+        <button className="create-btn" onClick={() => this.postNewProduct(name,price,image_url)}>Add to Inventory</button>
       </form>
     </div>
     );

@@ -12,9 +12,9 @@ massive( process.env.CONNECTION_STRING ).then( dbInstance => {
 } ).catch(err => console.log(err));
 
 
-app.post( '/api/product', controller.createProduct );
+app.post( '/api/AddPost', controller.postNewProduct );
 app.get( '/api/products', controller.getAllProducts );
-app.get( '/api/product/:id', controller.getOneProduct );
+//app.get( '/api/product/:id', controller.getOneProduct );
 // app.put( '/api/product/:id', products_controller.update );
 // app.delete( '/api/product/:id', products_controller.delete );
 

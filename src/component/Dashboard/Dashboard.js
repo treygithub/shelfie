@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Product from '../Product/Product';
+//import Product from '../Product/Product';
 
 
 class Dashboard extends Component {
@@ -11,9 +11,8 @@ class Dashboard extends Component {
       <div>
           <div>
               <h3>Dashboard</h3>
+              <hr />
           </div>
-          
-          price : $2:00
       </div>
     );
 
