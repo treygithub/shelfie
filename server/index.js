@@ -18,5 +18,5 @@ app.get( '/api/products', controller.getAllProducts );
 // app.put( '/api/product/:id', products_controller.update );
 app.delete( '/api/delete/:id',controller.handleDelete );
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3001;
 app.listen( port, () => { console.log(`Server listening on port ${port}.`);});

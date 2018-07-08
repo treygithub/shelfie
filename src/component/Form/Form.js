@@ -18,27 +18,31 @@ class Form extends Component {
     this.handleName=this.handleName.bind(this);
     this.handlePrice=this.handlePrice.bind(this);
     this.postNewProduct=this.postNewProduct.bind(this);
-    this.handleDeleteProduct=this.handleDeleteProduct.bind(this)
-
+    this.handleDeleteProduct=this.handleDeleteProduct.bind(this);
+    this.getProducts=this.getProducts.bind(this);
   }
 
   componentDidMount(){
+    this.getProducts();
+  };
+
+
+  getProducts(){
     axios.get('/api/products').then(res => {
       this.setState({
         product: res.data
       })
-      console.log(res)
+      console.log(res);
     })
-  };
+  }
+
 
   handleDeleteProduct(id) {
+    // this.props.delete([this.props.index])
+    console.log(id)
     axios
       .delete(`/api/delete/${id}`)
-      .then(res => {
-        this.setState({
-          product: res.data
-        })
-      })
+      .then(() => this.getProducts())
   }
 
   
@@ -72,9 +76,8 @@ class Form extends Component {
   postNewProduct = () => {
     let {name,price,image_url} = this.state
     axios.post("/api/AddPost", {name,price,image_url} ).then(res => {
-      this.setState({
-        product: res.data
-      })
+
+      this.getProducts();
       console.log(res)
     })
   }
@@ -93,12 +96,13 @@ render() {
           <input name="price" placeholder="Create Price" onChange={e => this.handlePrice(e.target.value)} />
           <div className="buttons">
             <button onClick={() => this.HandleCancel()}>Cancel</button>
-            <button onClick={() => this.postNewProduct(name,price,image_url)}>Add to Inventory</button>
+            <button onClick={() => this.postNewProduct()}>Add to Inventory</button>
           </div>
         </form>
         <hr />
         <Dashboard
       product={product}
+      delete1={this.handleDeleteProduct}
       />
     </div>
     );

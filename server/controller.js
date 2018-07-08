@@ -23,33 +23,25 @@ module.exports = {
     //     } );
     // },
   
-    getAllProducts: ( req, res, next ) => {
+    getAllProducts: ( req, res ) => {
       const dbInstance = req.app.set('db');
   
       dbInstance.getAll()
-        .then( product => res.status(200).json( product ) )
+        .then( response => res.status(200).json( response ) )
         .catch( err => {
           res.status(500).send({errorMessage: "Oops! Something went wrong!"});
           console.log(err)
         } );
     },
 
-    // handleDelete: (req, res) => {
-    //   const dbInstance = req.app.set("db");
-    //   const { id } = req.params;
-  
-    //   dbInstance
-    //     .delete([id])
-    //     .then(product => res.status(200).json(product))
-    //     .catch(err => res.status(500).send(err));
-    // }
-
     handleDelete: ( req, res, next ) => {
       const dbInstance = req.app.get('db');
       const { id } = req.params;
   
       dbInstance.delete( [id] )
-        .then( () => res.sendStatus(200) )
+        .then( response  => {
+          console.log(response)
+          res.sendStatus(200).json( )} )
         .catch( err => {
           res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
           console.log(err)
