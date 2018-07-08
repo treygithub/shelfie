@@ -3,7 +3,7 @@ import React from 'react';
     const DeleteBTN = (props) =>{
         return(
             <div>
-                <button onClick={() => props.HandleDelete(props.id)}>Delete</button>
+                <button onClick={() => props.handleDeleteProduct(props.id)}>Delete</button>
             </div>)
 }
 export default DeleteBTN;

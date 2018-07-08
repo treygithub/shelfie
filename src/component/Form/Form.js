@@ -18,6 +18,7 @@ class Form extends Component {
     this.handleName=this.handleName.bind(this);
     this.handlePrice=this.handlePrice.bind(this);
     this.postNewProduct=this.postNewProduct.bind(this);
+    this.handleDeleteProduct=this.handleDeleteProduct.bind(this)
 
   }
 
@@ -29,6 +30,16 @@ class Form extends Component {
       console.log(res)
     })
   };
+
+  handleDeleteProduct(id) {
+    axios
+      .delete(`/api/delete/${id}`)
+      .then(res => {
+        this.setState({
+          product: res.data
+        })
+      })
+  }
 
   
   handleUrl(val) {

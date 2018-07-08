@@ -34,17 +34,26 @@ module.exports = {
         } );
     },
 
+    // handleDelete: (req, res) => {
+    //   const dbInstance = req.app.set("db");
+    //   const { id } = req.params;
   
-    //  HandelDelete: ( req, res, next ) => {
-    //    const dbInstance = req.app.set('db');
-    //    const { params } = req;
-  
+    //   dbInstance
+    //     .delete([id])
+    //     .then(product => res.status(200).json(product))
+    //     .catch(err => res.status(500).send(err));
+    // }
 
-    //    dbInstance.delete( params.id )
-    //      .then( () => res.sendStatus(200) )
-    //      .catch( err => {
-    //        res.status(500).send({errorMessage: "Oops! Something went wrong!"});
-    //        console.log(err)
-    //      } );
-    //  }
+    handleDelete: ( req, res, next ) => {
+      const dbInstance = req.app.get('db');
+      const { id } = req.params;
+  
+      dbInstance.delete( [id] )
+        .then( () => res.sendStatus(200) )
+        .catch( err => {
+          res.status(500).send({errorMessage: "Oops! Something went wrong. Our engineers have been informed!"});
+          console.log(err)
+        } );
+    }
+
   };
