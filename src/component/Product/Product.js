@@ -1,13 +1,14 @@
 import React from 'react';
     
-    function Product (props) {
-        
+    const Product = (props) =>{
         return(
-      <div>
-       {/* <img src={props.img} alt="pro" />
-       <h1>{props.name}</h1>
-      <h3>{props.price}</h3> */}
-      </div>
-      )
+            <div>
+                <img src={props.image_url} alt="new product"></img>
+                <h4>Product Name: {props.name}</h4>
+                <h4>Product Price: {props.price}</h4>
+                <button>Delete</button>
+                <button>Update</button>
+                <hr />
+            </div>)
 }
 export default Product;
