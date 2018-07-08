@@ -35,12 +35,12 @@ module.exports = {
     },
 
   
-    //  delete: ( req, res, next ) => {
+    //  HandelDelete: ( req, res, next ) => {
     //    const dbInstance = req.app.set('db');
     //    const { params } = req;
   
 
-    //    dbInstance.delete_product( params.id )
+    //    dbInstance.delete( params.id )
     //      .then( () => res.sendStatus(200) )
     //      .catch( err => {
     //        res.status(500).send({errorMessage: "Oops! Something went wrong!"});

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from "axios";
-import Dashboard from '../Dashboard/Dashboard'
+import Dashboard from '../Dashboard/Dashboard';
 
 
 class Form extends Component {
