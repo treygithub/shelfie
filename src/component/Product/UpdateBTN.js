@@ -3,7 +3,8 @@ import React from 'react';
     const UpdateBTN = (props) =>{
         return(
             <div>
-                <button onClick={() => props.handleUpdate(props.id)} >Update</button>
+                <input name="price" placeholder="Change Price" onChange={e => props.handleChange(e) } />
+                <button onClick={ () => props.updateProduct(props.id) } >Update</button>
             </div>)
 }
 export default UpdateBTN;

@@ -12,14 +12,14 @@ class Form extends Component {
       name:'',
       price:0,
       image_url:''
+      
     }
 
-    this.handleUrl=this.handleUrl.bind(this);
-    this.handleName=this.handleName.bind(this);
-    this.handlePrice=this.handlePrice.bind(this);
     this.postNewProduct=this.postNewProduct.bind(this);
     this.handleDeleteProduct=this.handleDeleteProduct.bind(this);
     this.getProducts=this.getProducts.bind(this);
+    this.handleChange=this.handleChange.bind(this);
+    this.updateProduct=this.updateProduct.bind(this)
   }
 
   componentDidMount(){
@@ -39,61 +39,45 @@ class Form extends Component {
 
   handleDeleteProduct(id) {
     // this.props.delete([this.props.index])
-    console.log(id)
     axios
       .delete(`/api/delete/${id}`)
       .then(() => this.getProducts())
   }
 
-  
-  handleUrl(val) {
-    this.setState({
-      image_url: val
-    });
-  }
+  updateProduct(id) {
+    // console.log(this.state)
+    let newPrice=this.state.price
+    axios
+      .put(`/api/productUpdate/${id}`, { newPrice })
+      .then(() =>  this.getProducts())
+    }
 
-  handleName(val) {
-    this.setState({
-      name: val
-    });
+  handleChange(e) {
+    console.log(e.target.name)
+    this.setState({[e.target.name]: e.target.value})
   }
-
-  handlePrice(val) {
-    this.setState({
-      price: val
-    });
-  }
-  
-  handleCancel() {
-    this.setState({
-      name: "",
-      price: 0,
-      image_url: ""
-    });
-  }
-
 
   postNewProduct = () => {
     let {name,price,image_url} = this.state
     axios.post("/api/AddPost", {name,price,image_url} ).then(res => {
 
       this.getProducts();
-      console.log(res)
+      
     })
   }
 
 render() {
-  const { name, price, image_url, product } = this.state;
-
+  const { product } = this.state;
+console.log(this.state)
   return (
     <div>
         <form>
           <h3>Image URL:</h3>
-          <input name="image_url"placeholder="Add URL" onChange={e => this.handleUrl(e.target.value)} />
+          <input name="image_url"placeholder="Add URL" onChange={e => this.handleChange(e)} />
           <h3>Product Name:</h3>
-          <input name="name" placeholder="Create Product Name" onChange={e => this.handleName(e.target.value)} />
+          <input name="name" placeholder="Create Product Name" onChange={e => this.handleChange(e)} />
           <h3>Price:</h3>
-          <input name="price" placeholder="Create Price" onChange={e => this.handlePrice(e.target.value)} />
+          <input name="price" placeholder="Create Price" onChange={e => this.handleChange(e)} />
           <div className="buttons">
             <button onClick={() => this.HandleCancel()}>Cancel</button>
             <button onClick={() => this.postNewProduct()}>Add to Inventory</button>
@@ -103,6 +87,8 @@ render() {
         <Dashboard
       product={product}
       delete1={this.handleDeleteProduct}
+      updateProduct={this.updateProduct}
+      handleChange={this.handleChange}
       />
     </div>
     );

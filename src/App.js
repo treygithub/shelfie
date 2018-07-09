@@ -5,10 +5,7 @@ import Form from './component/Form/Form';
 
 
 class App extends Component {
-  // constructor(props){
-  //   super(props);
-
-  // }
+ 
   render() {
 
     return (

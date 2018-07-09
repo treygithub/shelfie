@@ -3,17 +3,11 @@ import Product from '../Product/Product';
 
 
 class Dashboard extends Component {
-  constructor(props){
-    super(props);
-
-  }
-    
+ 
 
   render() {
-  const { product,delete1 } = this.props;
-  console.log(this.props)
+  const { product,delete1,updateProduct,handleChange } = this.props;
   let mapAndShowStuff  = product.map((e,i) => {
-    console.log(e.id)
     return (
       <Product 
         key={i}
@@ -22,7 +16,11 @@ class Dashboard extends Component {
         name={e.name}
         price={e.price}
         delete1={delete1}
+        updateProduct={updateProduct}
+        handleChange={ handleChange }
+        e={e}
         >
+        
      </Product>)})
      return <div className="dashboard">{mapAndShowStuff}</div>;
 }

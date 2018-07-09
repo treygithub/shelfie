@@ -14,8 +14,8 @@ massive( process.env.CONNECTION_STRING ).then( dbInstance => {
 
 app.post( '/api/AddPost', controller.postNewProduct );
 app.get( '/api/products', controller.getAllProducts );
-//app.get( '/api/product/:id', controller.getOneProduct );
-// app.put( '/api/product/:id', products_controller.update );
+// app.get( '/api/product/:id', controller.getOneProduct );
+ app.put( '/api/productUpdate/:id', controller.updateProduct );
 app.delete( '/api/delete/:id',controller.handleDelete );
 
 const port = process.env.PORT || 3001;
