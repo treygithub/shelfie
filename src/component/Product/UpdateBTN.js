@@ -1,5 +1,5 @@
 import React from 'react';
-    //This is a child component to product.js Update or edit Button
+    //This is a child component to product.js Update and or edit Button
     const UpdateBTN = (props) =>{
         return(
             <div>

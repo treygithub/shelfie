@@ -41,7 +41,7 @@ module.exports = {
   
       dbInstance.delete( [id] )
         .then( response  => {
-          console.log(response)
+          //console.log(response)
           res.sendStatus(200).json( )} )
         .catch( err => {
           res.status(500).send({err: "Oops! Something went wrong. Our engineers have been informed!"});
@@ -53,7 +53,7 @@ module.exports = {
       const dbInstance = req.app.get("db");
       const { id } = req.params;
       const { newPrice } = req.body;
-      console.log(req.body)
+      //console.log(req.body)
   
       dbInstance.upDate([id,+newPrice])
       .then( response => {

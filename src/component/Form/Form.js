@@ -32,13 +32,12 @@ class Form extends Component {
       this.setState({
         product: res.data
       })
-      console.log(res);
+      //console.log(res);
     })
   }
 
 
   handleDeleteProduct(id) {
-    // this.props.delete([this.props.index])
     axios
       .delete(`/api/delete/${id}`)
       .then(() => this.getProducts())
@@ -53,14 +52,13 @@ class Form extends Component {
     }
 
   handleChange(e) {
-    console.log(e.target.name)
+    //console.log(e.target.name)
     this.setState({[e.target.name]: e.target.value})
   }
 
   postNewProduct = () => {
     let {name,price,image_url} = this.state
-    axios.post("/api/AddPost", {name,price,image_url} ).then(res => {
-
+    axios.post("/api/AddPost", {name,price,image_url} ).then( res => {
       this.getProducts();
       
     })
@@ -68,7 +66,7 @@ class Form extends Component {
 
 render() {
   const { product } = this.state;
-console.log(this.state)
+  //console.log(this.state)
   return (
     <div>
         <form>
