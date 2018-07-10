@@ -45,9 +45,9 @@ class Form extends Component {
 
   updateProduct(id) {
     // console.log(this.state)
-    let newPrice=this.state.price
+    let {name,price,image_url}=this.state
     axios
-      .put(`/api/productUpdate/${id}`, { newPrice })
+      .put(`/api/productUpdate/${id}`, {name,price,image_url })
       .then(() =>  this.getProducts())
     }
 
@@ -65,6 +65,7 @@ class Form extends Component {
   }
 
 render() {
+
   const { product } = this.state;
   //console.log(this.state)
   return (

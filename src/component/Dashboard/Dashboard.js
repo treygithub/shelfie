@@ -17,7 +17,6 @@ class Dashboard extends Component {
         delete1={delete1}
         updateProduct={updateProduct}
         handleChange={ handleChange }
-        e={e}
         >
         
      </Product>)})

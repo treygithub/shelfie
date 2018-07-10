@@ -50,12 +50,13 @@ module.exports = {
     },
 
     updateProduct: (req, res) => {
+      //console.log(req.body)
       const dbInstance = req.app.get("db");
       const { id } = req.params;
-      const { newPrice } = req.body;
+      const { name,price,image_url } = req.body;
       //console.log(req.body)
   
-      dbInstance.upDate([id,+newPrice])
+      dbInstance.upDate([id,name,price,image_url])
       .then( response => {
       res.status(200).json( )} )
       .catch( err => {
